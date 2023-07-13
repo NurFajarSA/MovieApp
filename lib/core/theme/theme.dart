@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 part 'colors.dart';
 part 'font.dart';
 
-final ThemeData lightThemeData = ThemeData(
+final ThemeData lightThemeData = ThemeData.light().copyWith(
   primaryColor: Colors.blueAccent,
-  fontFamily: 'sf-pro-display-regular',
-  textTheme: TextTheme(
-    headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+  textTheme: const TextTheme(
+    displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
   ),
 );
 
-final ThemeData darkThemeData = ThemeData(
+final ThemeData darkThemeData = ThemeData.dark().copyWith(
   primaryColor: Colors.blueAccent,
-  fontFamily: 'Georgia',
-  textTheme: TextTheme(
-    headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+  textTheme: const TextTheme(
+    displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
   ),
 );
