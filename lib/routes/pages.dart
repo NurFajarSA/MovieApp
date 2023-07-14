@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/app/modules/auth/signin/signin_binding.dart';
 import 'package:movie_app/app/modules/auth/signin/signin_page.dart';
 import 'package:movie_app/app/modules/home/home_binding.dart';
-import 'package:movie_app/app/modules/home/home_screen.dart';
+import 'package:movie_app/app/modules/home/home_page.dart';
 import 'package:movie_app/app/modules/splash/splash_binding.dart';
 import 'package:movie_app/app/modules/splash/splash_page.dart';
 part 'routes.dart';
@@ -12,7 +12,7 @@ abstract class AppPages {
     GetPage(
       name: Routes.home,
       binding: HomeBinding(),
-      page: () => const HomeScreen(),
+      page: () => HomePage(),
     ),
     GetPage(
       name: Routes.splash,

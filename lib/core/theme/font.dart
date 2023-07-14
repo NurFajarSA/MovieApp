@@ -1,7 +1,7 @@
 part of 'theme.dart';
 
-const TextStyle titleStyle = TextStyle(
+TextStyle titleStyle = TextStyle(
   fontFamily: "sf-pro-display-bold",
   fontSize: 35,
-  color: darkPrimaryColorStep12,
+  color: MyColor.primaryColor(12),
 );

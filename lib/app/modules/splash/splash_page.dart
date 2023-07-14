@@ -10,7 +10,7 @@ class SplashPage extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: darkPrimaryColorStep7,
+      backgroundColor: MyColor.primaryColor(7),
       body: Stack(children: [
         Center(
             child: Column(
@@ -18,7 +18,7 @@ class SplashPage extends GetView<SplashController> {
           children: [
             Image.asset("assets/images/logo.png"),
             const SizedBox(height: 20),
-            const Text(appName, style: titleStyle),
+            Text(appName, style: titleStyle),
             const SizedBox(height: 40),
           ],
         )),
@@ -30,7 +30,7 @@ class SplashPage extends GetView<SplashController> {
                 textAlign: TextAlign.center,
                 style: titleStyle.copyWith(
                     fontSize: 13,
-                    color: darkPrimaryColorStep12.withOpacity(0.8)))),
+                    color: MyColor.primaryColor(12).withOpacity(0.8)))),
       ]),
     );
   }

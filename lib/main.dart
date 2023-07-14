@@ -8,7 +8,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Supabase.initialize(url: baseUrl, anonKey: apiKey);
+  await Supabase.initialize(
+    url: baseUrl,
+    anonKey: apiKey,
+    authFlowType: AuthFlowType.pkce,
+  );
 
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
