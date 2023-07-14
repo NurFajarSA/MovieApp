@@ -1,6 +1,6 @@
 part of 'theme.dart';
 
-class MyColor {
+abstract class MyColor {
   static bool isDark = true; // Get.isDarkMode
 
   static Color primaryColor(int step) {

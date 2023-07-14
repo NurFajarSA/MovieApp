@@ -23,7 +23,8 @@ class MyTextfield extends StatelessWidget {
       required this.background,
       this.maxLines = 1,
       this.icon,
-      this.suffixIcon})
+      this.suffixIcon,
+      this.obscureText = false})
       : super(key: key);
 
   final bool isMandatory;
@@ -45,6 +46,7 @@ class MyTextfield extends StatelessWidget {
   final int? maxLines;
   final Widget? icon;
   final Icon? suffixIcon;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +83,9 @@ class MyTextfield extends StatelessWidget {
                     ),
           )
         ],
-        // const SizedBox(height: kDefaultPadding / 5 * 2),
+        const SizedBox(height: 2),
         TextFormField(
+          obscureText: obscureText,
           onTap: onTap,
           enabled: enabled,
           readOnly: readOnly,
@@ -104,7 +107,7 @@ class MyTextfield extends StatelessWidget {
             contentPadding: const EdgeInsets.all(15),
             errorText: error != null && error!.isNotEmpty ? error : null,
             hintText: hint,
-            fillColor: background,
+            fillColor: background.withOpacity(0),
             filled: true,
             suffixIcon: suffixIcon,
             focusedErrorBorder: OutlineInputBorder(
@@ -113,17 +116,17 @@ class MyTextfield extends StatelessWidget {
             ),
             hintStyle: hintStyle ??
                 ThemeData().textTheme.bodyMedium!.copyWith(
-                      color: MyColor.neutralColor(8),
+                      color: MyColor.neutralColor(11),
                       fontSize: 13,
                     ),
             errorStyle: ThemeData()
                 .textTheme
                 .bodyMedium!
-                .copyWith(color: MyColor.dangerColor(18), fontSize: 12),
+                .copyWith(color: MyColor.dangerColor(11), fontSize: 12),
             errorMaxLines: 2,
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: MyColor.dangerColor(18)),
+              borderSide: BorderSide(color: MyColor.dangerColor(8), width: 2),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),

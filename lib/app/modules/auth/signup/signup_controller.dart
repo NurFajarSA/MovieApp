@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:movie_app/app/data/services/auth_service.dart';
 import 'package:movie_app/routes/pages.dart';
 
-class SigninController extends GetxController {
-  final AuthService authService = Get.find<AuthService>();
+class SignupController extends GetxController {
+  final authService = Get.find<AuthService>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final fullnameController = TextEditingController();
+  final ageController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -29,27 +31,27 @@ class SigninController extends GetxController {
     return null;
   }
 
-  signIn() {
+  signUp() {
     if (isValid()) {
-      _signIn(email: emailController.text, password: passwordController.text);
+      _signUp(email: emailController.text, password: passwordController.text);
     }
   }
 
-  Future<void> _signIn(
+  Future<void> _signUp(
       {required String email, required String password}) async {
     try {
-      await authService.signIn(email: email, password: password);
+      await authService.signUp(email: email, password: password);
       if (authService.isLoggedIn()) {
-        Get.offAllNamed('/home');
+        Get.offAllNamed(Routes.updateProfile);
         Get.snackbar(
           "Success",
-          "Sign in successful",
+          "Sign up successful",
           snackPosition: SnackPosition.BOTTOM,
         );
       } else {
         Get.snackbar(
           "Error",
-          "Sign in failed",
+          "Sign up failed",
           snackPosition: SnackPosition.BOTTOM,
         );
       }
@@ -62,7 +64,33 @@ class SigninController extends GetxController {
     }
   }
 
-  toSignUp() {
-    Get.toNamed(Routes.signup);
+  updateProfile() {
+    if (isValid()) {
+      _updateProfile(
+          fullname: fullnameController.text,
+          age: int.parse(ageController.text));
+    }
+  }
+
+  _updateProfile({required String fullname, required int age}) async {
+    try {
+      await authService.updateProfile(fullname: fullname, age: age);
+      Get.offAllNamed(Routes.home);
+      Get.snackbar(
+        "Success",
+        "Update profile successful",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  toSignin() {
+    Get.back();
   }
 }

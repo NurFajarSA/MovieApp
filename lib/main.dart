@@ -11,7 +11,7 @@ void main() async {
   await Supabase.initialize(
     url: baseUrl,
     anonKey: apiKey,
-    authFlowType: AuthFlowType.pkce,
+    authFlowType: AuthFlowType.implicit,
   );
 
   runApp(GetMaterialApp(
@@ -19,7 +19,7 @@ void main() async {
     initialRoute: Routes.splash,
     theme: lightThemeData,
     darkTheme: darkThemeData,
-    defaultTransition: Transition.fade,
+    defaultTransition: Transition.fadeIn,
     initialBinding: InitialBinding(),
     getPages: AppPages.pages,
   ));

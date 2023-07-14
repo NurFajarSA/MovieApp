@@ -3,6 +3,8 @@ import 'package:movie_app/app/modules/home/home_controller.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView<HomeController> {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

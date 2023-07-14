@@ -42,4 +42,21 @@ class AuthService {
   Future<void> signOut() async {
     await client.auth.signOut();
   }
+
+  // Sign up with email and password
+  Future<void> signUp({required String email, required String password}) async {
+    await client.auth.signUp(email: email, password: password);
+  }
+
+  updateProfile({required String fullname, required int age}) async {
+    final user = client.auth.currentUser;
+    if (user != null) {
+      final updates = {
+        'full_name': fullname,
+        'age': age,
+        'updated_at': DateTime.now().toString(),
+      };
+      await client.from('profiles').update(updates).match({'id': user.id});
+    }
+  }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/app/modules/auth/signin/signin_controller.dart';
+import 'package:movie_app/app/modules/auth/signup/signup_controller.dart';
 import 'package:movie_app/app/widgets/my_textfield.dart';
 import 'package:movie_app/core/theme/theme.dart';
 
-class SigninPage extends GetView<SigninController> {
-  const SigninPage({super.key});
+class SignupPage extends GetView<SignupController> {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class SigninPage extends GetView<SigninController> {
               ],
             ),
             child: Column(children: [
-              Text("Sign In", style: Theme.of(context).textTheme.headlineLarge),
+              Text("Sign Up", style: Theme.of(context).textTheme.headlineLarge),
               const SizedBox(height: 20),
               Form(
                 key: controller.formKey,
@@ -64,7 +64,7 @@ class SigninPage extends GetView<SigninController> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  controller.signIn();
+                  controller.signUp();
                 },
                 style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(
@@ -83,19 +83,19 @@ class SigninPage extends GetView<SigninController> {
                     backgroundColor: MaterialStateProperty.all(
                       MyColor.primaryColor(9),
                     )),
-                child: const Text("Sign In"),
+                child: const Text("Sign Up"),
               ),
               const SizedBox(height: 14),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account? ",
+                  Text("Have an account? ",
                       style: Theme.of(context).textTheme.bodySmall!),
                   GestureDetector(
                     onTap: () {
-                      controller.toSignUp();
+                      controller.toSignin();
                     },
-                    child: Text("Create one",
+                    child: Text("Sign in",
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             color: MyColor.primaryColor(11),
                             fontWeight: FontWeight.bold)),
